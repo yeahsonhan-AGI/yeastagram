@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -47,73 +46,114 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* ========================================
+   Yeahstagram Natural Color System
+   Forest Green & Sage Theme
+   ======================================== */
+
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Background - Warm Gray */
+  --background: 245 245 245;      /* #F5F5F5 */
+  --foreground: 33 33 33;         /* #212121 - ink-900 */
+
+  /* Card colors - White */
+  --card: 255 255 255;            /* White for cards */
+  --card-foreground: 33 33 33;    /* #212121 */
+
+  /* Popover */
+  --popover: 255 255 255;
+  --popover-foreground: 33 33 33;
+
+  /* Primary - Forest Green */
+  --primary: 46 125 50;           /* #2E7D32 */
+  --primary-foreground: 255 255 255; /* White */
+
+  /* Secondary - Sage Green */
+  --secondary: 169 201 164;       /* #A9C9A4 */
+  --secondary-foreground: 33 33 33; /* #212121 */
+
+  /* Muted */
+  --muted: 242 242 242;           /* #F2F2F2 */
+  --muted-foreground: 117 117 117; /* #757575 */
+
+  /* Accent - Sunrise Orange */
+  --accent: 255 183 77;           /* #FFB74D */
+  --accent-foreground: 33 33 33;  /* #212121 */
+
+  /* Destructive - Earthy red */
+  --destructive: 211 47 47;       /* Red */
+  --destructive-foreground: 255 255 255;
+
+  /* Border - Subtle */
+  --border: 224 224 224;          /* #E0E0E0 */
+  --input: 242 242 242;           /* #F2F2F2 */
+  --ring: 46 125 50;              /* #2E7D32 */
+
+  /* Chart colors */
+  --chart-1: 46 125 50;           /* forest-700 */
+  --chart-2: 255 183 77;          /* sunrise-500 */
+  --chart-3: 169 201 164;         /* sage-400 */
+  --chart-4: 102 187 106;         /* forest-400 */
+  --chart-5: 67 160 71;           /* forest-500 */
+
+  /* Radius - Larger for modern card design */
+  --radius: 1rem;                 /* 16px */
+
+  /* Sidebar */
+  --sidebar: 255 255 255;
+  --sidebar-foreground: 33 33 33;
+  --sidebar-primary: 46 125 50;
+  --sidebar-primary-foreground: 255 255 255;
+  --sidebar-accent: 242 242 242;
+  --sidebar-accent-foreground: 33 33 33;
+  --sidebar-border: 224 224 224;
+  --sidebar-ring: 46 125 50;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* Dark mode - Deep forest tones */
+  --background: 18 28 18;         /* Deep forest */
+  --foreground: 245 245 245;      /* Light gray */
+
+  --card: 28 40 28;
+  --card-foreground: 245 245 245;
+
+  --popover: 28 40 28;
+  --popover-foreground: 245 245 245;
+
+  --primary: 102 187 106;         /* Lighter forest green */
+  --primary-foreground: 18 28 18;
+
+  --secondary: 67 110 67;         /* Muted green */
+  --secondary-foreground: 245 245 245;
+
+  --muted: 38 50 38;
+  --muted-foreground: 163 172 163;
+
+  --accent: 255 183 77;           /* Sunrise orange */
+  --accent-foreground: 18 28 18;
+
+  --destructive: 239 83 80;
+  --destructive-foreground: 255 255 255;
+
+  --border: 51 61 51;
+  --input: 38 50 38;
+  --ring: 102 187 106;
+
+  --chart-1: 102 187 106;
+  --chart-2: 255 183 77;
+  --chart-3: 129 199 132;
+  --chart-4: 165 214 167;
+  --chart-5: 67 110 67;
+
+  --sidebar: 28 40 28;
+  --sidebar-foreground: 245 245 245;
+  --sidebar-primary: 102 187 106;
+  --sidebar-primary-foreground: 18 28 18;
+  --sidebar-accent: 38 50 38;
+  --sidebar-accent-foreground: 245 245 245;
+  --sidebar-border: 51 61 51;
+  --sidebar-ring: 102 187 106;
 }
 
 @layer base {
@@ -125,5 +165,18 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
