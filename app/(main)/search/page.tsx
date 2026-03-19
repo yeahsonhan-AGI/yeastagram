@@ -7,14 +7,37 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { createClient } from '@/lib/supabase/client'
+import { toast } from '@/hooks/use-toast'
+import { createFollowNotification } from '@/lib/notifications'
+
+interface SearchResult {
+  id: string
+  username: string
+  full_name?: string
+  avatar_url?: string
+  followers_count?: number
+  isFollowing?: boolean
+}
 
 export default function SearchPage() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const query = searchParams.get('q') || ''
   const [searchQuery, setSearchQuery] = useState(query)
-  const [results, setResults] = useState<any[]>([])
+  const [results, setResults] = useState<SearchResult[]>([])
   const [loading, setLoading] = useState(false)
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Get current user
+    const getCurrentUser = async () => {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      setCurrentUserId(user?.id || null)
+    }
+    getCurrentUser()
+  }, [])
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -42,6 +65,63 @@ export default function SearchPage() {
     e.preventDefault()
     if (searchQuery.trim()) {
       router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+    }
+  }
+
+  const handleFollowToggle = async (profile: SearchResult, e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    if (!currentUserId || currentUserId === profile.id) return
+
+    const supabase = createClient()
+    const newFollowingState = !profile.isFollowing
+
+    // Optimistic update
+    setResults(results.map(r =>
+      r.id === profile.id
+        ? { ...r, isFollowing: newFollowingState, followers_count: (r.followers_count || 0) + (newFollowingState ? 1 : -1) }
+        : r
+    ))
+
+    try {
+      if (newFollowingState) {
+        await supabase
+          .from('follows')
+          .insert({
+            follower_id: currentUserId,
+            following_id: profile.id,
+          })
+        toast({
+          title: 'Following',
+          description: `You are now following @${profile.username}`,
+        })
+        await createFollowNotification(profile.id, currentUserId)
+      } else {
+        await supabase
+          .from('follows')
+          .delete()
+          .match({
+            follower_id: currentUserId,
+            following_id: profile.id,
+          })
+        toast({
+          title: 'Unfollowed',
+          description: `You unfollowed @${profile.username}`,
+        })
+      }
+    } catch (error) {
+      // Revert on error
+      setResults(results.map(r =>
+        r.id === profile.id
+          ? { ...r, isFollowing: profile.isFollowing, followers_count: profile.followers_count }
+          : r
+      ))
+      toast({
+        title: 'Error',
+        description: 'Failed to update follow status',
+        variant: 'destructive',
+      })
     }
   }
 
@@ -81,30 +161,43 @@ export default function SearchPage() {
                 {results.map((profile) => (
                   <div
                     key={profile.id}
-                    className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors"
+                    className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors gap-3"
                   >
-                    <Link href={`/${profile.username}`} className="flex items-center space-x-3 flex-1">
-                      <Avatar className="h-12 w-12">
+                    <Link href={`/${profile.username}`} className="flex items-center space-x-3 flex-1 min-w-0">
+                      <Avatar className="h-12 w-12 flex-shrink-0">
                         <AvatarImage src={profile.avatar_url || undefined} alt={profile.username || 'User'} />
                         <AvatarFallback className="bg-[#2D4A3E] text-[#FAF8F5]">
                           {profile.username?.charAt(0).toUpperCase() || 'U'}
                         </AvatarFallback>
                       </Avatar>
-                      <div>
-                        <p className="font-semibold">{profile.username}</p>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-semibold truncate">{profile.username}</p>
                         {profile.full_name && (
-                          <p className="text-sm text-muted-foreground">{profile.full_name}</p>
+                          <p className="text-sm text-muted-foreground truncate">{profile.full_name}</p>
                         )}
                         <p className="text-xs text-muted-foreground">
                           {profile.followers_count || 0} followers
                         </p>
                       </div>
                     </Link>
-                    <Link href={`/${profile.username}`}>
-                      <Button variant="outline" size="sm">
-                        View
-                      </Button>
-                    </Link>
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      {currentUserId && currentUserId !== profile.id ? (
+                        <Button
+                          variant={profile.isFollowing ? "outline" : "default"}
+                          size="sm"
+                          onClick={(e) => handleFollowToggle(profile, e)}
+                          className="rounded-full"
+                        >
+                          {profile.isFollowing ? 'Following' : 'Follow'}
+                        </Button>
+                      ) : (
+                        <Link href={`/${profile.username}`}>
+                          <Button variant="outline" size="sm">
+                            View
+                          </Button>
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
