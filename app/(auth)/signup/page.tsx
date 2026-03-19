@@ -66,7 +66,7 @@ export default function SignUpPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-3xl font-bold text-[#3D2914]">
-            Yeahstagram
+            Yact
           </CardTitle>
           <CardDescription>Create an account to get started</CardDescription>
         </CardHeader>

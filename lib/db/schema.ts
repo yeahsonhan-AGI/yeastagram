@@ -1,4 +1,4 @@
-// Database Schema for Yeahstagram
+// Database Schema for Yact
 // Run these SQL commands in Supabase SQL Editor
 
 export const schemaSQL = `

@@ -12,16 +12,21 @@ export default defineConfig({
   reporter: 'html',
 
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:3002',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
+    // 使用系统已安装的 Chrome（无需下载 Chromium）
+    channel: 'chrome',
   },
 
   projects: [
-    // 桌面版 Chrome
+    // 桌面版 Chrome（启用触摸支持）
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        hasTouch: true,
+      },
     },
 
     // 移动端 - iPhone 14 Pro
@@ -55,7 +60,7 @@ export default defineConfig({
   // 启动开发服务器
   webServer: {
     command: 'npm run dev',
-    url: 'http://localhost:3000',
+    url: 'http://localhost:3002',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },

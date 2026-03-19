@@ -1,5 +1,5 @@
 -- ============================================
--- Supabase Storage Setup for Yeahstagram
+-- Supabase Storage Setup for Yact
 -- Run this in Supabase SQL Editor
 -- ============================================
 

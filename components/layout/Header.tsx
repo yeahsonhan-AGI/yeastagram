@@ -96,7 +96,7 @@ export function Header({ user, title }: HeaderProps) {
     // Profile pages
     if (pathname?.match(/^\/[\w.-]+$/)) return 'Profile'
 
-    return 'Yeahstagram'
+    return 'Yact'
   }
 
   const isAuthPage = pathname?.startsWith('/auth') || pathname?.startsWith('/signin') || pathname?.startsWith('/signup')
@@ -117,7 +117,7 @@ export function Header({ user, title }: HeaderProps) {
           ) : (
             <Link href="/" className="flex items-center">
               <span className="text-xl font-bold text-primary">
-                Yeahstagram
+                Yact
               </span>
             </Link>
           )}

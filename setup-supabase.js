@@ -1,5 +1,5 @@
 /**
- * Yeahstagram - Supabase Database Setup Script
+ * Yact - Supabase Database Setup Script
  * Run this to create all required tables and policies
  */
 
@@ -183,7 +183,7 @@ CREATE POLICY "Users can update own notifications" ON public.notifications FOR U
 `;
 
 async function setupSupabase() {
-  console.log('=== YEAHSTAGRAM SUPABASE SETUP ===\n');
+  console.log('=== YACT SUPABASE SETUP ===\n');
 
   // Test connection
   console.log('Testing Supabase connection...');

@@ -3,8 +3,8 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "Yeahstagram - Share Your Moments",
-  description: "A modern social media platform to share your photos and connect with others.",
+  title: "Yact - Share Your Adventures",
+  description: "A modern social platform for outdoor enthusiasts to share adventures and connect.",
 };
 
 export default function RootLayout({

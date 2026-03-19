@@ -1,5 +1,5 @@
 -- ============================================
--- Yeahstagram Database Setup
+-- Yact Database Setup
 -- Run this in Supabase SQL Editor:
 -- https://supabase.com/dashboard/project/mjxnqgtdobxnlujxlgza/sql/new
 -- ============================================

@@ -1,6 +1,6 @@
-# Yeahstagram - Instagram Clone
+# Yact - Share Your Adventures
 
-A modern Instagram clone built with Next.js 15, TypeScript, Tailwind CSS, and Supabase.
+A modern social platform for outdoor enthusiasts built with Next.js 15, TypeScript, Tailwind CSS, and Supabase.
 
 ## Features
 
@@ -68,7 +68,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## Project Structure
 
 ```
-yeahstagram/
+yact/
 ├── app/
 │   ├── (auth)/          # Authentication pages
 │   ├── (main)/          # Main app pages

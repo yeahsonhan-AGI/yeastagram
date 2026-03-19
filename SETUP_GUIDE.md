@@ -1,6 +1,6 @@
-# Supabase Setup Guide for Yeahstagram
+# Supabase Setup Guide for Yact
 
-Follow these steps to set up your Supabase project for Yeahstagram.
+Follow these steps to set up your Supabase project for Yact.
 
 ## Step 1: Create a Supabase Project
 
@@ -9,7 +9,7 @@ Follow these steps to set up your Supabase project for Yeahstagram.
 3. Sign in with GitHub (recommended) or create an account
 4. Click "New Project"
 5. Fill in:
-   - **Name**: yeahstagram (or your preferred name)
+   - **Name**: yact (or your preferred name)
    - **Database Password**: Generate a strong password and save it
    - **Region**: Choose closest to your users
 6. Wait for the project to be provisioned (~2 minutes)
@@ -126,7 +126,7 @@ USING (bucket_id = 'avatars' AND auth.uid()::text = (storage.foldername(name))[1
 1. Go to [GitHub Developer Settings](https://github.com/settings/developers)
 2. Click "New OAuth App"
 3. Fill in:
-   - **Application name**: Yeahstagram
+   - **Application name**: Yact
    - **Homepage URL**: `http://localhost:3000` (dev) or your domain
    - **Authorization callback URL**: `https://xxxxx.supabase.co/auth/v1/callback`
 4. Copy Client ID and generate Client Secret

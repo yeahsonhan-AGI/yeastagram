@@ -1,6 +1,6 @@
-# 📱 Yeahstagram 移动端测试指南
+# 📱 Yact 移动端测试指南
 
-本文档介绍如何在 Windows 上使用 Playwright 测试 Yeahstagram 的移动端体验。
+本文档介绍如何在 Windows 上使用 Playwright 测试 Yact 的移动端体验。
 
 ---
 
@@ -248,7 +248,7 @@ npx playwright show-report
 
 - [Playwright 官方文档](https://playwright.dev)
 - [Playwright 设模拟模拟](https://playwright.dev/docs/emulation)
-- [Yeahstagram 源码](https://github.com/yeahsonhan-AGI/yeastagram)
+- [Yact 源码](https://github.com/yeahsonhan-AGI/yact)
 
 ---
 
