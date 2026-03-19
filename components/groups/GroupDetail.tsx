@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Users, Calendar, MapPin, Lock, Globe, Settings, UserMinus, Shield, LogOut, UserPlus, Link as LinkIcon, MoreVertical } from 'lucide-react'
+import { ArrowLeft, Users, Calendar, MapPin, Lock, Globe, Settings, UserMinus, Shield, LogOut, UserPlus, Link as LinkIcon, MoreVertical, Trash2, AlertTriangle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -145,6 +145,36 @@ export function GroupDetail({ group, currentUserId }: GroupDetailProps) {
     }
   }
 
+  const handleDisbandGroup = async () => {
+    // Show detailed warning
+    const memberCount = group.members?.length || 0
+    const message = `⚠️ WARNING: This will permanently delete the group "${group.name}"${memberCount > 1 ? ` and remove all ${memberCount} members` : ''}.\n\nThis action CANNOT be undone. All group data including:\n- Itinerary\n- Expenses\n- Messages\n- Member list\n\nWill be permanently deleted.\n\nAre you absolutely sure you want to disband this group?`
+
+    if (!confirm(message)) return
+
+    // Double confirmation
+    if (!confirm('This is your last chance! Type "DELETE" to confirm, or cancel to keep the group.')) return
+
+    setIsLoading(true)
+    try {
+      const response = await fetch(`/api/groups/${group.id}`, {
+        method: 'DELETE',
+      })
+
+      if (!response.ok) {
+        const data = await response.json()
+        throw new Error(data.error || 'Failed to disband group')
+      }
+
+      toast.success('Group disbanded successfully')
+      router.push('/groups')
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Failed to disband group')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   const activityColor = group.activity_type === 'hiking'
     ? 'bg-green-100 text-green-700'
     : 'bg-orange-100 text-orange-700'
@@ -246,17 +276,28 @@ export function GroupDetail({ group, currentUserId }: GroupDetailProps) {
               ) : (
                 <>
                   {isLeader && (
-                    <Button
-                      variant="outline"
-                      onClick={() => router.push(`/groups/${group.id}/edit`)}
-                      className="h-12 w-full sm:w-auto"
-                    >
-                      <Settings className="w-5 h-5 mr-2" />
-                      Settings
-                    </Button>
+                    <>
+                      <Button
+                        variant="outline"
+                        onClick={() => router.push(`/groups/${group.id}/edit`)}
+                        className="h-12 w-full sm:w-auto"
+                      >
+                        <Settings className="w-5 h-5 mr-2" />
+                        Settings
+                      </Button>
+                      <Button
+                        variant="destructive"
+                        onClick={handleDisbandGroup}
+                        disabled={isLoading}
+                        className="h-12 w-full sm:w-auto"
+                      >
+                        <Trash2 className="w-5 h-5 mr-2" />
+                        Disband Group
+                      </Button>
+                    </>
                   )}
                   <Button
-                    variant="destructive"
+                    variant={isLeader ? "outline" : "destructive"}
                     onClick={handleLeave}
                     disabled={isLoading}
                     className="h-12 w-full sm:w-auto"
