@@ -126,23 +126,24 @@ export function Header({ user, title }: HeaderProps) {
         {/* Right - Action Icons */}
         <div className="flex items-center space-x-1">
           {/* Search */}
-          <Link href="/search">
+          <Link href="/search" className="inline-flex">
             <Button
               variant="ghost"
               size="icon"
               className="h-9 w-9 rounded-full"
-              asChild
+              onClick={(e) => {
+                e.preventDefault()
+                router.push('/search')
+              }}
             >
-              <span>
-                <SearchIcon className="h-5 w-5" strokeWidth={2} />
-                <span className="sr-only">Search</span>
-              </span>
+              <SearchIcon className="h-5 w-5" strokeWidth={2} />
+              <span className="sr-only">Search</span>
             </Button>
           </Link>
 
           {/* Notifications */}
           <div className="relative">
-            <Link href="/notifications">
+            <Link href="/notifications" className="inline-flex">
               <Button
                 variant="ghost"
                 size="icon"
@@ -150,12 +151,13 @@ export function Header({ user, title }: HeaderProps) {
                   'h-9 w-9 rounded-full',
                   pathname === '/notifications' && 'bg-accent text-accent-foreground'
                 )}
-                asChild
+                onClick={(e) => {
+                  e.preventDefault()
+                  router.push('/notifications')
+                }}
               >
-                <span>
-                  <Heart className="h-5 w-5" strokeWidth={2} />
-                  <span className="sr-only">Notifications</span>
-                </span>
+                <Heart className="h-5 w-5" strokeWidth={2} />
+                <span className="sr-only">Notifications</span>
               </Button>
             </Link>
             {unreadCount > 0 && (
@@ -166,17 +168,18 @@ export function Header({ user, title }: HeaderProps) {
           </div>
 
           {/* Create */}
-          <Link href="/create">
+          <Link href="/create" className="inline-flex">
             <Button
               variant="ghost"
               size="icon"
               className="h-9 w-9 rounded-full"
-              asChild
+              onClick={(e) => {
+                e.preventDefault()
+                router.push('/create')
+              }}
             >
-              <span>
-                <Plus className="h-5 w-5" strokeWidth={2} />
-                <span className="sr-only">Create</span>
-              </span>
+              <Plus className="h-5 w-5" strokeWidth={2} />
+              <span className="sr-only">Create</span>
             </Button>
           </Link>
 
