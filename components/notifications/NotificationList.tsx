@@ -104,7 +104,7 @@ export function NotificationList({ notifications, currentUserId }: NotificationL
       case 'comment':
         return <MessageCircle className="h-5 w-5 text-blue-500" />
       case 'follow':
-        return <UserPlus className="h-5 w-5 text-[#2D4A3E]" />
+        return <UserPlus className="h-5 w-5 text-[hsl(var(--primary))]" />
       case 'group_request':
         return <Users className="h-5 w-5 text-orange-500" />
       case 'group_request_approved':
@@ -149,7 +149,7 @@ export function NotificationList({ notifications, currentUserId }: NotificationL
             <div className="flex-shrink-0">
               <Avatar className="h-10 w-10">
                 <AvatarImage src={actor?.avatar_url || undefined} alt={actor?.username || 'User'} />
-                <AvatarFallback className="bg-[#2D4A3E] text-[#FAF8F5] text-sm">
+                <AvatarFallback className="bg-[hsl(var(--primary))] text-[hsl(var(--background))] text-sm">
                   {actor?.username?.charAt(0).toUpperCase() || 'U'}
                 </AvatarFallback>
               </Avatar>

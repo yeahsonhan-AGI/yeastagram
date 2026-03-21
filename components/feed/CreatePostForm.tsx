@@ -157,7 +157,7 @@ export function CreatePostForm({ file, setFile, preview, setPreview, onClose }: 
         <div
           className={cn(
             'border-2 border-dashed rounded-lg p-8 text-center transition-colors',
-            dragActive ? 'border-[#2D4A3E] bg-[#EDE8DC]' : 'border-muted-foreground/25'
+            dragActive ? 'border-[hsl(var(--primary))] bg-[hsl(var(--muted))]' : 'border-muted-foreground/25'
           )}
           onDrop={handleDrop}
           onDragOver={handleDragOver}
@@ -225,7 +225,7 @@ export function CreatePostForm({ file, setFile, preview, setPreview, onClose }: 
 
           <Button
             type="submit"
-            className="w-full bg-[#2D4A3E] hover:bg-[#1F3A2E] text-[#FAF8F5]"
+            className="w-full bg-[hsl(var(--primary))] hover:bg-[hsl(var(--primary) / 80%)] text-[hsl(var(--background))]"
             disabled={uploading}
           >
             {uploading ? (

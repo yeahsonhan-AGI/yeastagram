@@ -47,113 +47,113 @@
 }
 
 /* ========================================
-   Yact Natural Color System
-   Forest Green & Sage Theme
+   Yact Adventure Color System
+   Forest, Earth & Sunset Theme
    ======================================== */
 
 :root {
-  /* Background - Warm Gray */
-  --background: 245 245 245;      /* #F5F5F5 */
-  --foreground: 33 33 33;         /* #212121 - ink-900 */
+  /* Background - Warm natural off-white */
+  --background: 251 248 242;      /* #FBF8F2 - warm cream */
+  --foreground: 23 31 20;         /* #171F14 - deep forest ink */
 
-  /* Card colors - White */
-  --card: 255 255 255;            /* White for cards */
-  --card-foreground: 33 33 33;    /* #212121 */
+  /* Card colors - Warm off-white with subtle warmth */
+  --card: 255 253 247;            /* #FFFDF7 - warm white */
+  --card-foreground: 23 31 20;    /* #171F14 */
 
   /* Popover */
-  --popover: 255 255 255;
-  --popover-foreground: 33 33 33;
+  --popover: 255 253 247;
+  --popover-foreground: 23 31 20;
 
-  /* Primary - Forest Green */
-  --primary: 46 125 50;           /* #2E7D32 */
+  /* Primary - Bold Forest Green */
+  --primary: 34 87 46;            /* #22572E - bold pine green */
   --primary-foreground: 255 255 255; /* White */
 
-  /* Secondary - Sage Green */
-  --secondary: 169 201 164;       /* #A9C9A4 */
-  --secondary-foreground: 33 33 33; /* #212121 */
+  /* Secondary - Warm Earth/Stone */
+  --secondary: 188 166 145;       /* #BCA691 - warm stone */
+  --secondary-foreground: 23 31 20; /* Deep forest */
 
   /* Muted */
-  --muted: 242 242 242;           /* #F2F2F2 */
-  --muted-foreground: 117 117 117; /* #757575 */
+  --muted: 240 236 228;           /* #F0ECE4 - warm gray */
+  --muted-foreground: 120 113 100; /* #787164 - warm earth gray */
 
-  /* Accent - Sunrise Orange */
-  --accent: 255 183 77;           /* #FFB74D */
-  --accent-foreground: 33 33 33;  /* #212121 */
+  /* Accent - Sunset Amber */
+  --accent: 249 140 56;           /* #F98C38 - vibrant sunset amber */
+  --accent-foreground: 255 255 255; /* White */
 
-  /* Destructive - Earthy red */
-  --destructive: 211 47 47;       /* Red */
+  /* Destructive - Earthy terracotta red */
+  --destructive: 194 57 42;       /* #C2392A - terracotta */
   --destructive-foreground: 255 255 255;
 
-  /* Border - Subtle */
-  --border: 224 224 224;          /* #E0E0E0 */
-  --input: 242 242 242;           /* #F2F2F2 */
-  --ring: 46 125 50;              /* #2E7D32 */
+  /* Border - Warm subtle */
+  --border: 220 215 205;          /* #DCD7CD */
+  --input: 240 236 228;           /* #F0ECE4 */
+  --ring: 34 87 46;                /* #22572E */
 
   /* Chart colors */
-  --chart-1: 46 125 50;           /* forest-700 */
-  --chart-2: 255 183 77;          /* sunrise-500 */
-  --chart-3: 169 201 164;         /* sage-400 */
-  --chart-4: 102 187 106;         /* forest-400 */
-  --chart-5: 67 160 71;           /* forest-500 */
+  --chart-1: 34 87 46;            /* forest green */
+  --chart-2: 249 140 56;          /* sunset amber */
+  --chart-3: 188 166 145;         /* warm stone */
+  --chart-4: 76 140 79;           /* lighter forest */
+  --chart-5: 249 115 22;          /* vibrant orange */
 
-  /* Radius - Larger for modern card design */
-  --radius: 1rem;                 /* 16px */
+  /* Radius - Mobile-friendly with rounded feel */
+  --radius: 0.875rem;             /* 14px - mobile optimized */
 
   /* Sidebar */
-  --sidebar: 255 255 255;
-  --sidebar-foreground: 33 33 33;
-  --sidebar-primary: 46 125 50;
+  --sidebar: 255 253 247;
+  --sidebar-foreground: 23 31 20;
+  --sidebar-primary: 34 87 46;
   --sidebar-primary-foreground: 255 255 255;
-  --sidebar-accent: 242 242 242;
-  --sidebar-accent-foreground: 33 33 33;
-  --sidebar-border: 224 224 224;
-  --sidebar-ring: 46 125 50;
+  --sidebar-accent: 240 236 228;
+  --sidebar-accent-foreground: 23 31 20;
+  --sidebar-border: 220 215 205;
+  --sidebar-ring: 34 87 46;
 }
 
 .dark {
-  /* Dark mode - Deep forest tones */
-  --background: 18 28 18;         /* Deep forest */
-  --foreground: 245 245 245;      /* Light gray */
+  /* Dark mode - Deep forest at twilight */
+  --background: 20 28 18;         /* #141C12 - deep forest night */
+  --foreground: 245 241 235;      /* #F5F1EB - warm moonlight */
 
-  --card: 28 40 28;
-  --card-foreground: 245 245 245;
+  --card: 30 40 28;               /* #1E281C - forest canopy */
+  --card-foreground: 245 241 235;
 
-  --popover: 28 40 28;
-  --popover-foreground: 245 245 245;
+  --popover: 30 40 28;
+  --popover-foreground: 245 241 235;
 
-  --primary: 102 187 106;         /* Lighter forest green */
-  --primary-foreground: 18 28 18;
+  --primary: 76 140 79;           /* #4C8C4F - bioluminescent green */
+  --primary-foreground: 20 28 18;
 
-  --secondary: 67 110 67;         /* Muted green */
-  --secondary-foreground: 245 245 245;
+  --secondary: 145 125 98;        /* #917D62 - muted earth */
+  --secondary-foreground: 245 241 235;
 
-  --muted: 38 50 38;
-  --muted-foreground: 163 172 163;
+  --muted: 40 50 38;              /* #283226 */
+  --muted-foreground: 165 159 145;
 
-  --accent: 255 183 77;           /* Sunrise orange */
-  --accent-foreground: 18 28 18;
+  --accent: 249 140 56;           /* Sunset amber - vibrant in dark */
+  --accent-foreground: 20 28 18;
 
   --destructive: 239 83 80;
   --destructive-foreground: 255 255 255;
 
-  --border: 51 61 51;
-  --input: 38 50 38;
-  --ring: 102 187 106;
+  --border: 55 65 50;             /* #374132 */
+  --input: 40 50 38;
+  --ring: 76 140 79;
 
-  --chart-1: 102 187 106;
-  --chart-2: 255 183 77;
-  --chart-3: 129 199 132;
-  --chart-4: 165 214 167;
-  --chart-5: 67 110 67;
+  --chart-1: 76 140 79;
+  --chart-2: 249 140 56;
+  --chart-3: 145 125 98;
+  --chart-4: 110 165 113;
+  --chart-5: 249 115 22;
 
-  --sidebar: 28 40 28;
-  --sidebar-foreground: 245 245 245;
-  --sidebar-primary: 102 187 106;
-  --sidebar-primary-foreground: 18 28 18;
-  --sidebar-accent: 38 50 38;
-  --sidebar-accent-foreground: 245 245 245;
-  --sidebar-border: 51 61 51;
-  --sidebar-ring: 102 187 106;
+  --sidebar: 30 40 28;
+  --sidebar-foreground: 245 241 235;
+  --sidebar-primary: 76 140 79;
+  --sidebar-primary-foreground: 20 28 18;
+  --sidebar-accent: 40 50 38;
+  --sidebar-accent-foreground: 245 241 235;
+  --sidebar-border: 55 65 50;
+  --sidebar-ring: 76 140 79;
 }
 
 @layer base {
@@ -178,6 +178,12 @@
   }
   .safe-area-inset-bottom {
     padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 16px);
   }
   .overscroll-contain {
     overscroll-behavior: contain;

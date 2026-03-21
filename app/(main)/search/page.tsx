@@ -141,7 +141,7 @@ export default function SearchPage() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search users..."
-          className="w-full pl-10 pr-20 py-2 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-[#2D4A3E]"
+          className="w-full pl-10 pr-20 py-2 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-[hsl(var(--primary))]"
         />
         <Button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2" size="sm">
           Search
@@ -170,7 +170,7 @@ export default function SearchPage() {
                     <Link href={`/${profile.username}`} className="flex items-center space-x-3 flex-1 min-w-0">
                       <Avatar className="h-12 w-12 flex-shrink-0">
                         <AvatarImage src={profile.avatar_url || undefined} alt={profile.username || 'User'} />
-                        <AvatarFallback className="bg-[#2D4A3E] text-[#FAF8F5]">
+                        <AvatarFallback className="bg-[hsl(var(--primary))] text-[#FAF8F5]">
                           {profile.username?.charAt(0).toUpperCase() || 'U'}
                         </AvatarFallback>
                       </Avatar>

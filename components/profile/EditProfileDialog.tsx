@@ -148,7 +148,7 @@ export function EditProfileDialog({ open, onOpenChange, profile }: EditProfileDi
           {/* Avatar Upload */}
           <div className="flex items-center space-x-4">
             <div className="relative group cursor-pointer" onClick={() => fileInputRef.current?.click()}>
-              <div className="relative h-20 w-20 rounded-full overflow-hidden bg-[#2D4A3E] flex items-center justify-center">
+              <div className="relative h-20 w-20 rounded-full overflow-hidden bg-primary flex items-center justify-center">
                 {(avatarPreview || profile.avatar_url) ? (
                   <img
                     src={avatarPreview || profile.avatar_url || undefined}
@@ -249,7 +249,7 @@ export function EditProfileDialog({ open, onOpenChange, profile }: EditProfileDi
             <Button
               type="submit"
               disabled={loading}
-              className="bg-[#2D4A3E] hover:bg-[#1F3A2E] text-[#FAF8F5]"
+              className="bg-primary hover:bg-primary/80 text-primary-foreground"
             >
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Save Changes

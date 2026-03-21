@@ -106,88 +106,90 @@ export function Header({ user, title }: HeaderProps) {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-      <div className="container flex h-14 max-w-screen-xl items-center justify-between px-4">
-        {/* Left - Logo or Page Title */}
-        <div className="flex items-center">
-          {title || pathname !== '/' ? (
-            <h1 className="text-lg font-semibold text-foreground">
-              {getPageTitle()}
-            </h1>
-          ) : (
-            <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold text-primary">
-                Yact
-              </span>
-            </Link>
-          )}
-        </div>
-
-        {/* Right - Action Icons */}
-        <div className="flex items-center space-x-1">
-          {/* Search */}
-          <Link href="/search" className="inline-flex">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-9 w-9 rounded-full"
-              onClick={(e) => {
-                e.preventDefault()
-                router.push('/search')
-              }}
-            >
-              <SearchIcon className="h-5 w-5" strokeWidth={2} />
-              <span className="sr-only">Search</span>
-            </Button>
-          </Link>
-
-          {/* Notifications */}
-          <div className="relative">
-            <Link href="/notifications" className="inline-flex">
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn(
-                  'h-9 w-9 rounded-full',
-                  pathname === '/notifications' && 'bg-accent text-accent-foreground'
-                )}
-                onClick={(e) => {
-                  e.preventDefault()
-                  router.push('/notifications')
-                }}
-              >
-                <Heart className="h-5 w-5" strokeWidth={2} />
-                <span className="sr-only">Notifications</span>
-              </Button>
-            </Link>
-            {unreadCount > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-destructive text-[10px] font-bold text-white">
-                {unreadCount > 99 ? '99+' : unreadCount}
-              </span>
+    <>
+      {/* Top Header */}
+      <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+        <div className="container flex h-14 max-w-screen-xl items-center justify-between px-4 safe-area-inset-top">
+          {/* Left - Logo or Page Title */}
+          <div className="flex items-center">
+            {title || pathname !== '/' ? (
+              <h1 className="text-lg font-semibold text-foreground">
+                {getPageTitle()}
+              </h1>
+            ) : (
+              <Link href="/" className="flex items-center">
+                <span className="text-xl font-bold text-primary">
+                  Yact
+                </span>
+              </Link>
             )}
           </div>
 
-          {/* Create */}
-          <Link href="/create" className="inline-flex">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-9 w-9 rounded-full"
-              onClick={(e) => {
-                e.preventDefault()
-                router.push('/create')
-              }}
-            >
-              <Plus className="h-5 w-5" strokeWidth={2} />
-              <span className="sr-only">Create</span>
-            </Button>
-          </Link>
+          {/* Right - Action Icons */}
+          <div className="flex items-center space-x-2">
+            {/* Search */}
+            <Link href="/search" className="inline-flex">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-10 w-10 rounded-full"
+                onClick={(e) => {
+                  e.preventDefault()
+                  router.push('/search')
+                }}
+              >
+                <SearchIcon className="h-5 w-5" strokeWidth={2} />
+                <span className="sr-only">Search</span>
+              </Button>
+            </Link>
+
+            {/* Notifications */}
+            <div className="relative">
+              <Link href="/notifications" className="inline-flex">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    'h-10 w-10 rounded-full',
+                    pathname === '/notifications' && 'bg-accent text-accent-foreground'
+                  )}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    router.push('/notifications')
+                  }}
+                >
+                  <Heart className="h-5 w-5" strokeWidth={2} />
+                  <span className="sr-only">Notifications</span>
+                </Button>
+              </Link>
+              {unreadCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-destructive text-[10px] font-bold text-destructive-foreground">
+                  {unreadCount > 99 ? '99+' : unreadCount}
+                </span>
+              )}
+            </div>
+
+            {/* Create */}
+            <Link href="/create" className="inline-flex">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-10 w-10 rounded-full"
+                onClick={(e) => {
+                  e.preventDefault()
+                  router.push('/create')
+                }}
+              >
+                <Plus className="h-5 w-5" strokeWidth={2} />
+                <span className="sr-only">Create</span>
+              </Button>
+            </Link>
 
           {/* User Menu - Sheet */}
           {user ? (
             <Sheet open={userMenuOpen} onOpenChange={setUserMenuOpen}>
               <SheetTrigger
-                className="relative h-9 w-9 rounded-full overflow-hidden border-2 border-transparent hover:border-muted-foreground/20 hover:bg-accent transition-colors p-0 flex items-center justify-center ml-1"
+                className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-transparent hover:border-muted-foreground/20 hover:bg-accent transition-colors p-0 flex items-center justify-center"
               >
                 <Avatar className="h-full w-full pointer-events-none">
                   <AvatarImage src={user.avatar_url || undefined} alt={user.username || 'User'} />
@@ -197,17 +199,17 @@ export function Header({ user, title }: HeaderProps) {
                 </Avatar>
                 <span className="sr-only">User menu</span>
               </SheetTrigger>
-              <SheetContent side="bottom" className="max-h-[80vh]">
+              <SheetContent side="bottom" className="max-h-[80vh] pb-safe">
                 {/* User info header */}
-                <div className="flex items-center gap-3 pb-4 border-b">
-                  <Avatar className="h-12 w-12">
+                <div className="flex items-center gap-3 pb-4 border-b pt-safe">
+                  <Avatar className="h-14 w-14">
                     <AvatarImage src={user.avatar_url || undefined} alt={user.username || 'User'} />
-                    <AvatarFallback className="bg-primary text-primary-foreground text-sm">
+                    <AvatarFallback className="bg-primary text-primary-foreground text-base">
                       {user.username?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-base truncate">
+                    <div className="font-semibold text-lg truncate">
                       {user.username || 'User'}
                     </div>
                     <div className="text-sm text-muted-foreground truncate">
@@ -233,18 +235,18 @@ export function Header({ user, title }: HeaderProps) {
                         setUserMenuOpen(false)
                       }
                     }}
-                    className="w-full flex items-center gap-3 px-4 py-3 text-sm text-left hover:bg-accent rounded-lg transition-colors"
+                    className="w-full flex items-center gap-3 px-4 py-4 text-base text-left hover:bg-accent rounded-xl transition-colors active:bg-accent/80"
                   >
-                    <UserIcon className="h-5 w-5 text-muted-foreground" />
+                    <UserIcon className="h-6 w-6 text-muted-foreground" />
                     <span className="font-medium">Profile</span>
                   </Link>
 
                   <Link
                     href="/settings"
                     onClick={() => setUserMenuOpen(false)}
-                    className="w-full flex items-center gap-3 px-4 py-3 text-sm text-left hover:bg-accent rounded-lg transition-colors"
+                    className="w-full flex items-center gap-3 px-4 py-4 text-base text-left hover:bg-accent rounded-xl transition-colors active:bg-accent/80"
                   >
-                    <Settings className="h-5 w-5 text-muted-foreground" />
+                    <Settings className="h-6 w-6 text-muted-foreground" />
                     <span className="font-medium">Settings</span>
                   </Link>
 
@@ -255,9 +257,9 @@ export function Header({ user, title }: HeaderProps) {
                       setUserMenuOpen(false)
                       handleSignOut()
                     }}
-                    className="w-full flex items-center gap-3 px-4 py-3 text-sm text-left text-destructive hover:bg-destructive/10 rounded-lg transition-colors"
+                    className="w-full flex items-center gap-3 px-4 py-4 text-base text-left text-destructive hover:bg-destructive/10 rounded-xl transition-colors active:bg-destructive/20"
                   >
-                    <LogOut className="h-5 w-5" />
+                    <LogOut className="h-6 w-6" />
                     <span className="font-medium">Sign out</span>
                   </button>
                 </div>
@@ -276,5 +278,6 @@ export function Header({ user, title }: HeaderProps) {
         </div>
       </div>
     </header>
+    </>
   )
 }

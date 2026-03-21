@@ -22,9 +22,9 @@ export default async function MainLayout({
   }
 
   return (
-    <div className="min-h-screen bg-background pb-16">
+    <div className="min-h-screen bg-background pb-safe md:pb-0">
       <Header user={userProfile} />
-      <main className="container mx-auto max-w-screen-xl py-4 px-4">
+      <main className="container mx-auto max-w-screen-xl py-4 px-4 pb-20 md:pb-4">
         {children}
       </main>
       <BottomNavigation username={userProfile?.username} />

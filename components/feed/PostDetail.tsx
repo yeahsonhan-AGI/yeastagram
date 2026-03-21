@@ -160,7 +160,7 @@ export function PostDetail({ post, currentUserId }: PostDetailProps) {
                   </Button>
                   <Avatar className="h-8 w-8">
                     <AvatarImage src={post.profiles?.avatar_url || undefined} />
-                    <AvatarFallback className="bg-[#2D4A3E] text-[#FAF8F5] text-xs">
+                    <AvatarFallback className="bg-primary text-primary-foreground text-xs">
                       {post.profiles?.username?.charAt(0).toUpperCase() || 'U'}
                     </AvatarFallback>
                   </Avatar>
@@ -182,7 +182,7 @@ export function PostDetail({ post, currentUserId }: PostDetailProps) {
                   <div className="flex items-start space-x-3">
                     <Avatar className="h-8 w-8">
                       <AvatarImage src={post.profiles?.avatar_url || undefined} />
-                      <AvatarFallback className="bg-[#2D4A3E] text-[#FAF8F5] text-xs">
+                      <AvatarFallback className="bg-primary text-primary-foreground text-xs">
                         {post.profiles?.username?.charAt(0).toUpperCase() || 'U'}
                       </AvatarFallback>
                     </Avatar>
@@ -265,7 +265,7 @@ export function PostDetail({ post, currentUserId }: PostDetailProps) {
                     variant="ghost"
                     size="sm"
                     disabled={!comment.trim()}
-                    className="font-semibold text-[#2D4A3E] hover:text-[#1F3A2E]"
+                    className="font-semibold text-primary hover:text-primary/80"
                   >
                     Post
                   </Button>

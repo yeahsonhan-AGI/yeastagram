@@ -234,16 +234,16 @@ export function CreateGroupForm({ tripId, onSuccess }: CreateGroupFormProps) {
                           key={option.value}
                           className={`flex items-start gap-3 p-3 border rounded-lg cursor-pointer transition-colors ${
                             field.value === option.value
-                              ? 'border-[#2D4A3E] bg-[#2D4A3E]/5'
-                              : 'border-border hover:border-[#2D4A3E]/50'
+                              ? 'border-[hsl(var(--primary))] bg-[hsl(var(--primary))]/5'
+                              : 'border-border hover:border-[hsl(var(--primary))]/50'
                           }`}
                           onClick={() => field.onChange(option.value)}
                         >
                           <div className={`flex items-center justify-center w-5 h-5 mt-0.5 rounded-full border-2 ${
-                            field.value === option.value ? 'border-[#2D4A3E]' : 'border-muted-foreground'
+                            field.value === option.value ? 'border-[hsl(var(--primary))]' : 'border-muted-foreground'
                           }`}>
                             {field.value === option.value && (
-                              <div className="w-2.5 h-2.5 rounded-full bg-[#2D4A3E]" />
+                              <div className="w-2.5 h-2.5 rounded-full bg-[hsl(var(--primary))]" />
                             )}
                           </div>
                           <div className="flex-1">
